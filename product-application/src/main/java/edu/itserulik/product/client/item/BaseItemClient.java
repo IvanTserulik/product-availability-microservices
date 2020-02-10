@@ -41,7 +41,7 @@ public class BaseItemClient extends BaseClient {
     private <T> Mono<T> handleResponse(Mono<T> responseMono) {
         return HystrixCommands
                 .from(responseMono)
-                .commandProperties(setter -> setter.withExecutionTimeoutInMilliseconds(1000)
+                .commandProperties(setter -> setter.withExecutionTimeoutInMilliseconds(8000)
                         .withCircuitBreakerRequestVolumeThreshold(1)
                         .withCircuitBreakerSleepWindowInMilliseconds(10000))
                 .commandName("getItems")
